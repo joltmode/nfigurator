@@ -1,15 +1,17 @@
-# Nginx Configuration Processor
+# Nfigurator
+## NGINX Configuration Processor
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/romanpitak/nginx-config-processor.svg)](https://packagist.org/packages/romanpitak/nginx-config-processor)
-[![Total Downloads](https://img.shields.io/packagist/dt/romanpitak/nginx-config-processor.svg)](https://packagist.org/packages/romanpitak/nginx-config-processor)
-[![License](https://img.shields.io/packagist/l/romanpitak/nginx-config-processor.svg)](https://packagist.org/packages/romanpitak/nginx-config-processor)
-[![Build Status](https://travis-ci.org/romanpitak/Nginx-Config-Processor.svg?branch=master)](https://travis-ci.org/romanpitak/Nginx-Config-Processor)
-[![Code Climate](https://codeclimate.com/github/romanpitak/Nginx-Config-Processor/badges/gpa.svg)](https://codeclimate.com/github/romanpitak/Nginx-Config-Processor)
-[![Test Coverage](https://codeclimate.com/github/romanpitak/Nginx-Config-Processor/badges/coverage.svg)](https://codeclimate.com/github/romanpitak/Nginx-Config-Processor/coverage)
+[![Latest Stable Version](https://img.shields.io/packagist/v/joltmode/nfigurator.svg)](https://packagist.org/packages/joltmode/nfigurator)
+[![Total Downloads](https://img.shields.io/packagist/dt/joltmode/nfigurator.svg)](https://packagist.org/packages/joltmode/nfigurator)
+[![License](https://img.shields.io/packagist/l/joltmode/nfigurator.svg)](https://packagist.org/packages/joltmode/nfigurator)
+[![Build Status](https://travis-ci.org/joltmode/nfigurator.svg?branch=master)](https://travis-ci.org/joltmode/nfigurator)
+[![Code Climate](https://codeclimate.com/github/joltmode/nfigurator/badges/gpa.svg)](https://codeclimate.com/github/joltmode/nfigurator)
+[![Test Coverage](https://codeclimate.com/github/joltmode/nfigurator/badges/coverage.svg)](https://codeclimate.com/github/joltmode/nfigurator/coverage)
 [![Codacy Badge](https://www.codacy.com/project/badge/bf83cd710c374869a96cd5d5e44e0329)](https://www.codacy.com/public/roman/Nginx-Config-Processor)
 [![Codacy Badge](https://api.codacy.com/project/badge/coverage/bf83cd710c374869a96cd5d5e44e0329)](https://www.codacy.com/app/roman/Nginx-Config-Processor)
 
 (c) 2014-2016 [Roman Piták](http://pitak.net) <roman@pitak.net>
+(c) 2017 Toms Seisums
 
 PHP Nginx configuration files processor (parser, creator).
 
@@ -18,7 +20,7 @@ PHP Nginx configuration files processor (parser, creator).
 The best way to install is to use the [Composer](https://getcomposer.org/) dependency manager.
 
 ```
-php composer.phar require romanpitak/nginx-config-processor
+php composer.phar require joltmode/nfigurator
 ```
 
 ## Features

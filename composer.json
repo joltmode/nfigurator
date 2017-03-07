@@ -1,7 +1,7 @@
 {
-    "name": "romanpitak/nginx-config-processor",
+    "name": "joltmode/nfigurator",
     "type": "library",
-    "description": "Nginx configuration files processor.",
+    "description": "NGINX configuration file processing library.",
     "keywords": [
         "nginx",
         "conf",
@@ -17,7 +17,7 @@
         "manager",
         "php"
     ],
-    "homepage": "https://github.com/romanpitak/Nginx-Config-Processor",
+    "homepage": "https://github.com/joltmode/nfigurator",
     "license": "MIT",
     "authors": [
         {
@@ -25,21 +25,26 @@
             "email": "roman@pitak.net",
             "homepage": "http://pitak.net",
             "role": "Developer"
+        },
+        {
+            "name": "Toms Seisums",
+            "email": "toms.seisums@gmail.com",
+            "role": "Developer"
         }
     ],
     "support": {
-        "email": "roman@pitak.net",
-        "issues": "https://github.com/romanpitak/Nginx-Config-Processor/issues",
-        "source": "https://github.com/romanpitak/Nginx-Config-Processor"
+        "email": "toms.seisums@gmail.com",
+        "issues": "https://github.com/joltmode/nfigurator/issues",
+        "source": "https://github.com/joltmode/nfigurator"
     },
     "repositories": [
         {
             "type": "git",
-            "url": "https://github.com/romanpitak/Nginx-Config-Processor.git"
+            "url": "https://github.com/joltmode/nfigurator.git"
         }
     ],
     "bugs": {
-        "url": "https://github.com/romanpitak/Nginx-Config-Processor/issues"
+        "url": "https://github.com/joltmode/nfigurator/issues"
     },
     "require": {
         "php": ">=5.3.3"
@@ -50,7 +55,7 @@
     },
     "autoload": {
         "psr-4": {
-            "RomanPitak\\Nginx\\Config\\": "src/"
+            "Nfigurator\\": "src/"
         }
     }
 }
