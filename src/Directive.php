@@ -4,6 +4,7 @@
  * This file is part of the Nginx Config Processor package.
  *
  * (c) Roman Piták <roman@pitak.net>
+ * (c) Toms Seisums
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,6 +12,9 @@
  */
 
 namespace RomanPitak\Nginx\Config;
+
+// TODO: Typed values.
+// TODO: Multi-value values (server_name).
 
 class Directive extends Printable
 {
@@ -231,6 +235,26 @@ class Directive extends Printable
         return (!$this->getComment()->isEmpty());
     }
 
+    /**
+     * Get the name of this Directive.
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Get the value of this Directive.
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
     /*
      * ========== Setters ==========
      */
@@ -292,6 +316,18 @@ class Directive extends Printable
     public function setCommentText($text)
     {
         $this->getComment()->setText($text);
+        return $this;
+    }
+
+    /**
+     * Set the value for this Directive.
+     *
+     * @param string $value
+     * @return $this
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
         return $this;
     }
 
