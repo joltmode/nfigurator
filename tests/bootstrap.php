@@ -1,7 +1,8 @@
 <?php
 /**
- * This file is part of the romanpitak/nginx-config-processor package.
+ * This file is part of the joltmode/nfigurator package.
  *
+ * (c) Toms Seisums
  * (c) Roman Piták <roman@pitak.net>
  *
  * For the full copyright and license information, please view the LICENSE

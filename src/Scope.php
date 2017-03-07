@@ -3,15 +3,15 @@
 /**
  * This file is part of the Nginx Config Processor package.
  *
- * (c) Roman Piták <roman@pitak.net>
  * (c) Toms Seisums
+ * (c) Roman Piták <roman@pitak.net>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  */
 
-namespace RomanPitak\Nginx\Config;
+namespace Nfigurator;
 
 class Scope extends Printable
 {

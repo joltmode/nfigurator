@@ -1,20 +1,25 @@
 <?php
+
 /**
- * This file is part of the romanpitak/nginx-config-processor package.
+ * This file is part of the Nginx Config Processor package.
  *
+ * (c) Toms Seisums
  * (c) Roman Piták <roman@pitak.net>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
+ *
  */
 
-namespace RomanPitak\Nginx\Config;
+namespace Nfigurator;
 
-class TextTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class TextTest extends TestCase
 {
 
     /**
-     * @expectedException \RomanPitak\Nginx\Config\Exception
+     * @expectedException \Nfigurator\Exception
      */
     public function testGetCharPosition()
     {
@@ -23,7 +28,7 @@ class TextTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \RomanPitak\Nginx\Config\Exception
+     * @expectedException \Nfigurator\Exception
      */
     public function testGetCharEof()
     {
