@@ -21,14 +21,14 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Roman Piták",
-            "email": "roman@pitak.net",
-            "homepage": "http://pitak.net",
+            "name": "Toms Seisums",
+            "email": "toms.seisums@gmail.com",
             "role": "Developer"
         },
         {
-            "name": "Toms Seisums",
-            "email": "toms.seisums@gmail.com",
+            "name": "Roman Piták",
+            "email": "roman@pitak.net",
+            "homepage": "http://pitak.net",
             "role": "Developer"
         }
     ],
