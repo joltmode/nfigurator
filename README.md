@@ -1,15 +1,6 @@
 # Nfigurator
 ## NGINX Configuration Processor
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/joltmode/nfigurator.svg)](https://packagist.org/packages/joltmode/nfigurator)
-[![Total Downloads](https://img.shields.io/packagist/dt/joltmode/nfigurator.svg)](https://packagist.org/packages/joltmode/nfigurator)
-[![License](https://img.shields.io/packagist/l/joltmode/nfigurator.svg)](https://packagist.org/packages/joltmode/nfigurator)
-[![Build Status](https://img.shields.io/travis/joltmode/nfigurator/master.svg)](https://travis-ci.org/joltmode/nfigurator)
-[![Code Climate](https://img.shields.io/codeclimate/github/joltmode/nfigurator.svg)](https://codeclimate.com/github/joltmode/nfigurator)
-[![Test Coverage](https://img.shields.io/codeclimate/coverage/joltmode/nfigurator.svg)](https://codeclimate.com/github/joltmode/nfigurator/coverage)
-[![Codacy Grade Badge](https://img.shields.io/codacy/grade/55153261fcf7497cbc1335484132dc78.svg)](https://www.codacy.com/app/joltmode/nfigurator)
-[![Codacy Coverage Badge](https://img.shields.io/codacy/coverage/55153261fcf7497cbc1335484132dc78.svg)](https://www.codacy.com/app/joltmode/nfigurator)
-
 (c) 2017 Toms Seisums  
 (c) 2014-2016 [Roman Piták](http://pitak.net) <roman@pitak.net>
 
