@@ -1,6 +1,7 @@
 # Nfigurator
 ## NGINX Configuration Processor
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/55153261fcf7497cbc1335484132dc78)](https://www.codacy.com/app/joltmode/nfigurator?utm_source=github.com&utm_medium=referral&utm_content=joltmode/nfigurator&utm_campaign=badger)
 [![Latest Stable Version](https://img.shields.io/packagist/v/joltmode/nfigurator.svg)](https://packagist.org/packages/joltmode/nfigurator)
 [![Total Downloads](https://img.shields.io/packagist/dt/joltmode/nfigurator.svg)](https://packagist.org/packages/joltmode/nfigurator)
 [![License](https://img.shields.io/packagist/l/joltmode/nfigurator.svg)](https://packagist.org/packages/joltmode/nfigurator)
