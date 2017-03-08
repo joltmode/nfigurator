@@ -175,7 +175,7 @@ class Directive extends Printable
     }
 
     private static function checkKeyValue($text) {
-        if (1 === preg_match('#^([a-z][a-z0-9._/+-]*)\s+([^;{]+)$#', $text, $matches)) {
+        if (1 === preg_match('#^([a-z][a-z0-9\._\/\+\-\$]*)\s+([^;{]+)$#', $text, $matches)) {
             return array($matches[1], rtrim($matches[2]));
         }
         return false;
