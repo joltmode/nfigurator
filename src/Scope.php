@@ -30,7 +30,7 @@ class Scope extends Printable
      * @param $filePath
      * @throws Exception
      */
-    public function saveToFile($filePath)
+    public function saveToFile($filePath): void
     {
         $handle = @fopen($filePath, 'w');
         if (false === $handle) {
@@ -58,7 +58,7 @@ class Scope extends Printable
      *
      * @return Scope
      */
-    public static function create()
+    public static function create(): self
     {
         return new self();
     }
@@ -106,7 +106,7 @@ class Scope extends Printable
      * @param $filePath
      * @return Scope
      */
-    public static function fromFile($filePath)
+    public static function fromFile($filePath): self
     {
         return self::fromString(new File($filePath));
     }
@@ -120,7 +120,7 @@ class Scope extends Printable
      *
      * @return Directive|null
      */
-    public function getParentDirective()
+    public function getParentDirective(): ?Directive
     {
         return $this->parentDirective;
     }
@@ -130,7 +130,7 @@ class Scope extends Printable
      *
      * @return Directive[]
      */
-    public function getDirectives()
+    public function getDirectives(): array
     {
         return $this->directives;
     }
@@ -147,7 +147,7 @@ class Scope extends Printable
      * @param Directive $directive
      * @return $this
      */
-    public function addDirective(Directive $directive)
+    public function addDirective(Directive $directive): self
     {
         if ($directive->getParentScope() !== $this) {
             $directive->setParentScope($this);
@@ -155,6 +155,14 @@ class Scope extends Printable
 
         $this->directives[] = $directive;
         $this->addPrintable($directive);
+
+        return $this;
+    }
+
+
+    public function addNewline(): self
+    {
+        $this->addPrintable(new EmptyLine());
 
         return $this;
     }

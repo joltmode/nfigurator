@@ -26,7 +26,7 @@ class EmptyLineTest extends TestCase
     }
 
     /**
-     * @depends testCanBeConstructed
+     * @depends self::testCanBeConstructed
      *
      * @param EmptyLine $emptyLine
      */
