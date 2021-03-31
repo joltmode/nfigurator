@@ -3,6 +3,7 @@
 /**
  * This file is part of the Nginx Config Processor package.
  *
+ * (c) Michael Tiel <michael@tiel.dev>
  * (c) Toms Seisums
  * (c) Roman Piták <roman@pitak.net>
  *
@@ -18,7 +19,7 @@ class Comment extends Printable
     /** @var string $text */
     private $text = null;
 
-    public function __construct($text = null)
+    public function __construct(?string $text = null)
     {
         $this->text = $text;
     }
@@ -38,7 +39,7 @@ class Comment extends Printable
      *
      * @return string|null
      */
-    public function getText()
+    public function getText(): ?string
     {
         return $this->text;
     }
@@ -48,7 +49,7 @@ class Comment extends Printable
      *
      * @return bool
      */
-    public function isEmpty()
+    public function isEmpty(): bool
     {
         return ((is_null($this->text)) || ('' === $this->text));
     }
@@ -58,7 +59,7 @@ class Comment extends Printable
      *
      * @return bool
      */
-    public function isMultiline()
+    public function isMultiline(): bool
     {
         return (false !== strpos(rtrim($this->text), "\n"));
     }
@@ -70,13 +71,21 @@ class Comment extends Printable
      * the comment will not print.
      *
      * @param string|null $text
+     * @return self
      */
-    public function setText($text)
+    public function setText(?string $text): self
     {
         $this->text = $text;
+
+        return $this;
     }
 
-    public function prettyPrint($indentLevel, $spacesPerIndent = 4)
+    /**
+     * @param $indentLevel
+     * @param int $spacesPerIndent
+     * @return string
+     */
+    public function prettyPrint($indentLevel, $spacesPerIndent = 4): string
     {
         if (true === $this->isEmpty()) {
             return '';

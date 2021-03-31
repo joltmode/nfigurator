@@ -3,6 +3,7 @@
 /**
  * This file is part of the Nginx Config Processor package.
  *
+ * (c) Michael Tiel <michael@tiel.dev>
  * (c) Toms Seisums
  * (c) Roman Piták <roman@pitak.net>
  *

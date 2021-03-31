@@ -3,6 +3,7 @@
 /**
  * This file is part of the Nginx Config Processor package.
  *
+ * (c) Michael Tiel <michael@tiel.dev>
  * (c) Toms Seisums
  * (c) Roman Piták <roman@pitak.net>
  *
@@ -21,7 +22,7 @@ class EmptyLine extends Printable
         return new self;
     }
 
-    public function prettyPrint($indentLevel, $spacesPerIndent = 4)
+    public function prettyPrint($indentLevel, $spacesPerIndent = 4): string
     {
         return "\n";
     }

@@ -11,8 +11,10 @@
  *
  */
 
-namespace Nfigurator;
+namespace Tests;
 
+use Nfigurator\Directive;
+use Nfigurator\Scope;
 use PHPUnit\Framework\TestCase;
 
 class ScopeTest extends TestCase

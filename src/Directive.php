@@ -3,6 +3,7 @@
 /**
  * This file is part of the Nginx Config Processor package.
  *
+ * (c) Michael Tiel <michael@tiel.dev>
  * (c) Toms Seisums
  * (c) Roman Piták <roman@pitak.net>
  *
@@ -15,6 +16,8 @@ namespace Nfigurator;
 
 // TODO: Typed values.
 // TODO: Multi-value values (server_name).
+
+use MongoDB\Driver\Command;
 
 class Directive extends Printable
 {
@@ -46,7 +49,8 @@ class Directive extends Printable
         Scope $childScope = null,
         Scope $parentScope = null,
         Comment $comment = null
-    ) {
+    )
+    {
         $this->name = $name;
         $this->value = $value;
         if (!is_null($childScope)) {
@@ -80,16 +84,17 @@ class Directive extends Printable
         Scope $childScope = null,
         Scope $parentScope = null,
         Comment $comment = null
-    ) {
+    )
+    {
         return new self($name, $value, $childScope, $parentScope, $comment);
     }
 
     /**
-     * @param \RomanPitak\Nginx\Config\Text $configString
-     * @return self
+     * @param Text $configString
+     * @return Directive
      * @throws Exception
      */
-    public static function fromString(Text $configString)
+    public static function fromString(Text $configString): Directive
     {
         $text = '';
         while (false === $configString->eof()) {
@@ -106,10 +111,17 @@ class Directive extends Printable
         throw new Exception('Could not create directive.');
     }
 
+    /**
+     * @param $nameString
+     * @param Text $scopeString
+     * @return Directive
+     * @throws Exception
+     */
     private static function newDirectiveWithScope(
         $nameString,
         Text $scopeString
-    ) {
+    )
+    {
         $scopeString->inc();
         list($name, $value) = self::processText($nameString);
         $directive = new Directive($name, $value);
@@ -136,7 +148,8 @@ class Directive extends Printable
     private static function newDirectiveWithoutScope(
         $nameString,
         Text $configString
-    ) {
+    )
+    {
         $configString->inc();
         list($name, $value) = self::processText($nameString);
         $directive = new Directive($name, $value);
@@ -174,14 +187,16 @@ class Directive extends Printable
         throw new Exception('Text "' . $text . '" did not match pattern.');
     }
 
-    private static function checkKeyValue($text) {
+    private static function checkKeyValue($text)
+    {
         if (1 === preg_match('#^([a-z][a-z0-9\._\/\+\-\$]*)\s+([^;{]+)$#', $text, $matches)) {
             return array($matches[1], rtrim($matches[2]));
         }
         return false;
     }
 
-    private static function checkKey($text) {
+    private static function checkKey($text)
+    {
         if (1 === preg_match('#^([a-z][a-z0-9._/+-]*)\s*$#', $text, $matches)) {
             return array($matches[1], null);
         }
@@ -197,7 +212,7 @@ class Directive extends Printable
      *
      * @return Scope|null
      */
-    public function getParentScope()
+    public function getParentScope(): ?Scope
     {
         return $this->parentScope;
     }
@@ -207,7 +222,7 @@ class Directive extends Printable
      *
      * @return Scope|null
      */
-    public function getChildScope()
+    public function getChildScope(): ?Scope
     {
         return $this->childScope;
     }
@@ -217,7 +232,7 @@ class Directive extends Printable
      *
      * @return Comment
      */
-    public function getComment()
+    public function getComment(): Comment
     {
         if (is_null($this->comment)) {
             $this->comment = new Comment();
@@ -230,7 +245,7 @@ class Directive extends Printable
      *
      * @return bool
      */
-    public function hasComment()
+    public function hasComment(): bool
     {
         return (!$this->getComment()->isEmpty());
     }
@@ -336,13 +351,9 @@ class Directive extends Printable
      */
 
     /**
-     * Pretty print with indentation.
-     *
-     * @param $indentLevel
-     * @param int $spacesPerIndent
-     * @return string
+     * @inheritDoc
      */
-    public function prettyPrint($indentLevel, $spacesPerIndent = 4)
+    public function prettyPrint($indentLevel, $spacesPerIndent = 4): string
     {
         $indent = str_repeat(str_repeat(' ', $spacesPerIndent), $indentLevel);
 

@@ -11,8 +11,9 @@
  *
  */
 
-namespace Nfigurator;
+namespace Tests;
 
+use Nfigurator\EmptyLine;
 use PHPUnit\Framework\TestCase;
 
 class EmptyLineTest extends TestCase

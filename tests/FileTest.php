@@ -11,8 +11,9 @@
  *
  */
 
-namespace Nfigurator;
+namespace Tests;
 
+use Nfigurator\File;
 use PHPUnit\Framework\TestCase;
 
 class FileTest extends TestCase

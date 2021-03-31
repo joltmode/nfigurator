@@ -3,6 +3,7 @@
 /**
  * This file is part of the Nginx Config Processor package.
  *
+ * (c) Michael Tiel <michael@tiel.dev>
  * (c) Toms Seisums
  * (c) Roman Piták <roman@pitak.net>
  *
@@ -202,13 +203,9 @@ class Scope extends Printable
      */
 
     /**
-     * Pretty print with indentation.
-     *
-     * @param $indentLevel
-     * @param int $spacesPerIndent
-     * @return string
+     * @inheritDoc
      */
-    public function prettyPrint($indentLevel, $spacesPerIndent = 4)
+    public function prettyPrint($indentLevel, $spacesPerIndent = 4): string
     {
         $resultString = "";
         foreach ($this->printables as $printable) {
@@ -218,7 +215,7 @@ class Scope extends Printable
         return $resultString;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->prettyPrint(-1);
     }
