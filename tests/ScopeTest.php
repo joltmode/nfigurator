@@ -11,8 +11,10 @@
  *
  */
 
-namespace Nfigurator;
+namespace Tests;
 
+use Nfigurator\Directive;
+use Nfigurator\Scope;
 use PHPUnit\Framework\TestCase;
 
 class ScopeTest extends TestCase
@@ -20,8 +22,8 @@ class ScopeTest extends TestCase
 
     public function testFromFile()
     {
-        Scope::fromFile('tests/test_input.conf')->saveToFile('build/out.conf');
-        $this->assertEquals(@file_get_contents('tests/test_input.conf'), @file_get_contents('build/out.conf'));
+        Scope::fromFile('tests/test_input.conf')->saveToFile('tests/out.conf');
+        $this->assertEquals(@file_get_contents('tests/test_input.conf'), @file_get_contents('tests/out.conf'));
     }
 
     /**
@@ -49,5 +51,21 @@ class ScopeTest extends TestCase
             )->__toString();
         $this->assertEquals($config_string, @file_get_contents('tests/scope_create_output.conf'));
     }
+
+    /** @test */
+    public function testCanAddNewline()
+    {
+        $config = (string) Scope::create()
+            ->addDirective(Directive::create('server')
+                ->setChildScope(Scope::create()->addNewline()));
+
+
+        $this->assertEquals("server {
+
+}
+", (string) $config);
+
+    }
+
 
 }

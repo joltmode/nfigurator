@@ -3,6 +3,7 @@
 /**
  * This file is part of the Nginx Config Processor package.
  *
+ * (c) Michael Tiel <michael@tiel.dev>
  * (c) Toms Seisums
  * (c) Roman Piták <roman@pitak.net>
  *
@@ -15,7 +16,7 @@ namespace Nfigurator;
 
 class Text
 {
-    const CURRENT_POSITION = -1;
+    private const CURRENT_POSITION = -1;
 
     /** @var string $data */
     private $data;
@@ -26,7 +27,7 @@ class Text
     /**
      * @param string $data
      */
-    public function __construct($data)
+    public function __construct(string $data)
     {
         $this->position = 0;
         $this->data = $data;
@@ -45,7 +46,7 @@ class Text
      * @return string The current character (under the pointer).
      * @throws Exception When out of range
      */
-    public function getChar($position = self::CURRENT_POSITION)
+    public function getChar(int $position = self::CURRENT_POSITION)
     {
         if (self::CURRENT_POSITION === $position) {
             $position = $this->position;
@@ -70,7 +71,7 @@ class Text
      * @param int $position
      * @return string
      */
-    public function getRestOfTheLine($position = self::CURRENT_POSITION)
+    public function getRestOfTheLine(int $position = self::CURRENT_POSITION): string
     {
         if (self::CURRENT_POSITION === $position) {
             $position = $this->position;
@@ -90,7 +91,7 @@ class Text
      * @return bool
      * @throws Exception
      */
-    public function eol($position = self::CURRENT_POSITION)
+    public function eol(int $position = self::CURRENT_POSITION): bool
     {
         return (("\r" === $this->getChar($position)) || ("\n" === $this->getChar($position)));
     }
@@ -101,7 +102,7 @@ class Text
      * @param int $position
      * @return bool
      */
-    public function isEmptyLine($position = self::CURRENT_POSITION)
+    public function isEmptyLine(int $position = self::CURRENT_POSITION): bool
     {
         $line = $this->getCurrentLine($position);
         return (0 === strlen(trim($line)));
@@ -113,7 +114,7 @@ class Text
      * @param int $position
      * @return string
      */
-    public function getCurrentLine($position = self::CURRENT_POSITION)
+    public function getCurrentLine(int $position = self::CURRENT_POSITION): string
     {
         if (self::CURRENT_POSITION === $position) {
             $position = $this->position;
@@ -127,10 +128,10 @@ class Text
     /**
      * Get the position of the last (previous) EOL.
      *
-     * @param int $position
+     * @param int|bool $position
      * @return int
      */
-    public function getLastEol($position = self::CURRENT_POSITION)
+    public function getLastEol(int $position = self::CURRENT_POSITION)
     {
         if (self::CURRENT_POSITION === $position) {
             $position = $this->position;
@@ -145,7 +146,7 @@ class Text
      * @param int $position
      * @return int
      */
-    public function getNextEol($position = self::CURRENT_POSITION)
+    public function getNextEol(int $position = self::CURRENT_POSITION): int
     {
         if (self::CURRENT_POSITION === $position) {
             $position = $this->position;
@@ -165,7 +166,7 @@ class Text
      * @param int $position
      * @return bool
      */
-    public function eof($position = self::CURRENT_POSITION)
+    public function eof(int $position = self::CURRENT_POSITION): bool
     {
         if (self::CURRENT_POSITION === $position) {
             $position = $this->position;
@@ -181,22 +182,28 @@ class Text
      * Move string pointer.
      *
      * @param int $inc
+     * @return self
      */
-    public function inc($inc = 1)
+    public function inc(int $inc = 1): self
     {
         $this->position += $inc;
+
+        return $this;
     }
 
     /**
      * Move pointer (position) to the next EOL.
      *
      * @param int $position
+     * @return self
      */
-    public function gotoNextEol($position = self::CURRENT_POSITION)
+    public function gotoNextEol(int $position = self::CURRENT_POSITION): self
     {
         if (self::CURRENT_POSITION === $position) {
             $position = $this->position;
         }
         $this->position = $this->getNextEol($position);
+
+        return $this;
     }
 }

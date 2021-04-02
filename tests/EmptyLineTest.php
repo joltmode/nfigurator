@@ -11,8 +11,9 @@
  *
  */
 
-namespace Nfigurator;
+namespace Tests;
 
+use Nfigurator\EmptyLine;
 use PHPUnit\Framework\TestCase;
 
 class EmptyLineTest extends TestCase
@@ -22,16 +23,6 @@ class EmptyLineTest extends TestCase
     {
         $emptyLine = new EmptyLine();
         $this->assertInstanceOf('\\Nfigurator\\EmptyLine', $emptyLine);
-        return $emptyLine;
-    }
-
-    /**
-     * @depends testCanBeConstructed
-     *
-     * @param EmptyLine $emptyLine
-     */
-    public function testPrettyPrint(EmptyLine $emptyLine)
-    {
         $this->assertEquals("\n", $emptyLine->prettyPrint(0));
     }
 

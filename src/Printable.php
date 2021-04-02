@@ -3,6 +3,7 @@
 /**
  * This file is part of the Nginx Config Processor package.
  *
+ * (c) Michael Tiel <michael@tiel.dev>
  * (c) Toms Seisums
  * (c) Roman Piták <roman@pitak.net>
  *
@@ -15,9 +16,17 @@ namespace Nfigurator;
 
 abstract class Printable
 {
-    abstract public function prettyPrint($indentLevel, $spacesPerIndent = 4);
+    /**
+     * @param $indentLevel
+     * @param int $spacesPerIndent
+     * @return string
+     */
+    abstract public function prettyPrint(int $indentLevel, int $spacesPerIndent = 4): string;
 
-    public function __toString()
+    /**
+     * @return string
+     */
+    public function __toString(): string
     {
         return $this->prettyPrint(0);
     }

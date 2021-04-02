@@ -11,8 +11,9 @@
  *
  */
 
-namespace Nfigurator;
+namespace Tests;
 
+use Nfigurator\Text;
 use PHPUnit\Framework\TestCase;
 
 class TextTest extends TestCase

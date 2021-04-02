@@ -1,5 +1,5 @@
 {
-    "name": "joltmode/nfigurator",
+    "name": "theirritainer/nfigurator",
     "type": "library",
     "description": "NGINX configuration file processing library.",
     "keywords": [
@@ -17,9 +17,15 @@
         "manager",
         "php"
     ],
-    "homepage": "https://github.com/joltmode/nfigurator",
+    "homepage": "https://github.com/theirritainer/nfigurator",
     "license": "MIT",
     "authors": [
+        {
+            "name": "Michael Tiel",
+            "email": "michael@tiel.dev",
+            "homepage": "https://tiel.dev",
+            "role": "Developer"
+        },
         {
             "name": "Toms Seisums",
             "email": "toms.seisums@gmail.com",
@@ -33,21 +39,18 @@
         }
     ],
     "support": {
-        "email": "toms.seisums@gmail.com",
-        "issues": "https://github.com/joltmode/nfigurator/issues",
-        "source": "https://github.com/joltmode/nfigurator"
+        "email": "michael@tiel.dev",
+        "issues": "https://github.com/theirritainer/nfigurator/issues",
+        "source": "https://github.com/theirritainer/nfigurator"
     },
     "repositories": [
         {
             "type": "git",
-            "url": "https://github.com/joltmode/nfigurator.git"
+            "url": "https://github.com/theirritainer/nfigurator.git"
         }
     ],
-    "bugs": {
-        "url": "https://github.com/joltmode/nfigurator/issues"
-    },
     "require": {
-        "php": ">=5.3.3"
+        "php": ">=7.2"
     },
     "require-dev": {
         "codeclimate/php-test-reporter": "dev-master",
@@ -56,7 +59,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Nfigurator\\": "src/"
+            "Nfigurator\\": "src/",
+            "Tests\\": "tests/"
         }
     }
 }

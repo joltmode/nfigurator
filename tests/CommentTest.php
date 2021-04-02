@@ -11,8 +11,9 @@
  *
  */
 
-namespace Nfigurator;
+namespace Tests;
 
+use Nfigurator\Comment;
 use PHPUnit\Framework\TestCase;
 
 class CommentTest extends TestCase

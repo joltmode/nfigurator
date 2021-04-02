@@ -3,3 +3,5 @@ build
 composer.lock
 composer.phar
 phpunit.phar
+tests/out.conf
+.idea/

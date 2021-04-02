@@ -1,6 +1,8 @@
 # Nfigurator
 ## NGINX Configuration Processor
 
+
+(c) 2021 [Michael Tiel](https://tiel.dev) <michael@tiel.dev>  
 (c) 2017 Toms Seisums  
 (c) 2014-2016 [Roman Piták](http://pitak.net) <roman@pitak.net>
 
