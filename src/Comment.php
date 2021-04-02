@@ -24,7 +24,12 @@ class Comment extends Printable
         $this->text = $text;
     }
 
-    public static function fromString(Text $configString)
+    /**
+     * @param Text $configString
+     * @return static
+     * @throws Exception
+     */
+    public static function fromString(Text $configString): self
     {
         $text = '';
         while ((false === $configString->eof()) && (false === $configString->eol())) {
@@ -85,7 +90,7 @@ class Comment extends Printable
      * @param int $spacesPerIndent
      * @return string
      */
-    public function prettyPrint($indentLevel, $spacesPerIndent = 4): string
+    public function prettyPrint(int $indentLevel, int $spacesPerIndent = 4): string
     {
         if (true === $this->isEmpty()) {
             return '';

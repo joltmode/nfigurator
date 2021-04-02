@@ -21,7 +21,7 @@ abstract class Printable
      * @param int $spacesPerIndent
      * @return string
      */
-    abstract public function prettyPrint($indentLevel, $spacesPerIndent = 4): string;
+    abstract public function prettyPrint(int $indentLevel, int $spacesPerIndent = 4): string;
 
     /**
      * @return string

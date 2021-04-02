@@ -16,13 +16,22 @@ namespace Nfigurator;
 
 class EmptyLine extends Printable
 {
-    public static function fromString(Text $configString)
+    /**
+     * @param Text $configString
+     * @return static
+     */
+    public static function fromString(Text $configString): self
     {
         $configString->gotoNextEol();
         return new self;
     }
 
-    public function prettyPrint($indentLevel, $spacesPerIndent = 4): string
+    /**
+     * @param int $indentLevel
+     * @param int $spacesPerIndent
+     * @return string
+     */
+    public function prettyPrint(int $indentLevel, int $spacesPerIndent = 4): string
     {
         return "\n";
     }

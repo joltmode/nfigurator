@@ -160,7 +160,19 @@ class Scope extends Printable
         return $this;
     }
 
+    /**
+     * @param array $directives
+     */
+    public function addDirectives(array $directives): void
+    {
+        foreach ($directives as $directive) {
+            $this->addDirective($directive);
+        }
+    }
 
+    /**
+     * @return $this
+     */
     public function addNewline(): self
     {
         $this->addPrintable(new EmptyLine());
@@ -205,7 +217,7 @@ class Scope extends Printable
     /**
      * @inheritDoc
      */
-    public function prettyPrint($indentLevel, $spacesPerIndent = 4): string
+    public function prettyPrint(int $indentLevel, int $spacesPerIndent = 4): string
     {
         $resultString = "";
         foreach ($this->printables as $printable) {

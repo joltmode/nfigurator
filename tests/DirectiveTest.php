@@ -32,4 +32,13 @@ class DirectiveTest extends TestCase
 
         $this->assertEquals("port 80;\n\n", (string) $directive->getChildScope());
     }
+
+    public function testCanHandleMultiValueValues()
+    {
+        $line = "listen 443 ssl http2 default_server;";
+
+        $directive = Directive::fromString(new Text($line));
+
+        $this->assertNull($directive->getChildScope());
+    }
 }

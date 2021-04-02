@@ -14,18 +14,11 @@
 
 namespace Nfigurator;
 
-// TODO: Typed values.
-// TODO: Multi-value values (server_name).
-
-use MongoDB\Driver\Command;
-
 class Directive extends Printable
 {
     /** @var string $name */
     private $name;
 
-    /** @var string $value */
-    private $value;
 
     /** @var Scope $childScope */
     private $childScope = null;
@@ -37,22 +30,27 @@ class Directive extends Printable
     private $comment = null;
 
     /**
+     * @var array
+     */
+    private $params = [];
+
+    /**
      * @param string $name
-     * @param string $value
+     * @param array $params
      * @param Scope $childScope
      * @param Scope $parentScope
      * @param Comment $comment
      */
     public function __construct(
         $name,
-        $value = null,
+        $params = [],
         Scope $childScope = null,
         Scope $parentScope = null,
         Comment $comment = null
     )
     {
         $this->name = $name;
-        $this->value = $value;
+        $this->params = $params;
         if (!is_null($childScope)) {
             $this->setChildScope($childScope);
         }
@@ -71,22 +69,24 @@ class Directive extends Printable
     /**
      * Provides fluid interface.
      *
-     * @param $name
-     * @param null $value
+     * @param string $name
+     * @param string|null $value
      * @param Scope $childScope
      * @param Scope $parentScope
      * @param Comment $comment
      * @return Directive
      */
     public static function create(
-        $name,
-        $value = null,
+        string $name,
+        string $value = null,
         Scope $childScope = null,
         Scope $parentScope = null,
         Comment $comment = null
     )
     {
-        return new self($name, $value, $childScope, $parentScope, $comment);
+        $params = (new ParamsParser($value))->getParams();
+
+        return new self($name, $params, $childScope, $parentScope, $comment);
     }
 
     /**
@@ -124,7 +124,9 @@ class Directive extends Printable
     {
         $scopeString->inc();
         list($name, $value) = self::processText($nameString);
-        $directive = new Directive($name, $value);
+
+        $params = (new ParamsParser($value))->getParams();
+        $directive = new Directive($name, $params);
 
         $comment = self::checkRestOfTheLineForComment($scopeString);
         if (false !== $comment) {
@@ -152,7 +154,9 @@ class Directive extends Printable
     {
         $configString->inc();
         list($name, $value) = self::processText($nameString);
-        $directive = new Directive($name, $value);
+
+        $params = (new ParamsParser($value))->getParams();
+        $directive = new Directive($name, $params);
 
         $comment = self::checkRestOfTheLineForComment($configString);
         if (false !== $comment) {
@@ -353,13 +357,14 @@ class Directive extends Printable
     /**
      * @inheritDoc
      */
-    public function prettyPrint($indentLevel, $spacesPerIndent = 4): string
+    public function prettyPrint(int $indentLevel, int $spacesPerIndent = 4): string
     {
         $indent = str_repeat(str_repeat(' ', $spacesPerIndent), $indentLevel);
 
         $resultString = $indent . $this->name;
-        if (!is_null($this->value)) {
-            $resultString .= " " . $this->value;
+        if (count($this->params))
+        {
+            $resultString .= ' '.$this->renderParams();
         }
 
         if (is_null($this->getChildScope())) {
@@ -384,5 +389,19 @@ class Directive extends Printable
         }
 
         return $resultString;
+    }
+
+    /**
+     * @return string
+     */
+    private function renderParams(): string
+    {
+        $result = [];
+        foreach($this->params as $param)
+        {
+            $result[] = (string) $param;
+        }
+
+        return implode(' ', $result);
     }
 }

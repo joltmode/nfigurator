@@ -23,16 +23,6 @@ class EmptyLineTest extends TestCase
     {
         $emptyLine = new EmptyLine();
         $this->assertInstanceOf('\\Nfigurator\\EmptyLine', $emptyLine);
-        return $emptyLine;
-    }
-
-    /**
-     * @depends self::testCanBeConstructed
-     *
-     * @param EmptyLine $emptyLine
-     */
-    public function testPrettyPrint(EmptyLine $emptyLine)
-    {
         $this->assertEquals("\n", $emptyLine->prettyPrint(0));
     }
 
