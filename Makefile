@@ -2,13 +2,13 @@
 .PHONY: test clean coverage
 
 vendor: composer.json
-	composer install --dev
+	composer install --dev --ignore-platform-reqs
 
 build:
-	mkdir --parents -- $@
+	mkdir $@
 
 test: vendor build
-	phpunit
+	./vendor/bin/phpunit
 
 coverage: vendor build
 	phpunit --coverage-html build/html/coverage
