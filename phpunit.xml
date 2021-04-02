@@ -6,7 +6,6 @@
         convertNoticesToExceptions="true"
         convertWarningsToExceptions="true"
         stopOnFailure="false"
-        syntaxCheck="true"
         verbose="false"
         >
     <testsuites>
@@ -14,9 +13,4 @@
             <directory suffix="Test.php">tests</directory>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist>
-            <directory suffix=".php">src</directory>
-        </whitelist>
-    </filter>
 </phpunit>

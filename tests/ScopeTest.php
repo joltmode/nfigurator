@@ -14,6 +14,7 @@
 namespace Tests;
 
 use Nfigurator\Directive;
+use Nfigurator\Exception;
 use Nfigurator\Scope;
 use PHPUnit\Framework\TestCase;
 
@@ -22,15 +23,14 @@ class ScopeTest extends TestCase
 
     public function testFromFile()
     {
-        Scope::fromFile('tests/test_input.conf')->saveToFile('tests/out.conf');
-        $this->assertEquals(@file_get_contents('tests/test_input.conf'), @file_get_contents('tests/out.conf'));
+        Scope::fromFile(__DIR__.'/test_input.conf')->saveToFile(__DIR__.'/out.conf');
+        $this->assertEquals(@file_get_contents(__DIR__.'/test_input.conf'), @file_get_contents(__DIR__.'/out.conf'));
     }
 
-    /**
-     * @expectedException \Nfigurator\Exception
-     */
     public function testSaveToFile()
     {
+        $this->expectException(\Nfigurator\Exception::class);
+
         $scope = new Scope();
         $scope->saveToFile('this/path/does/not/exist.conf');
     }
@@ -49,7 +49,7 @@ class ScopeTest extends TestCase
                     )
                 )
             )->__toString();
-        $this->assertEquals($config_string, @file_get_contents('tests/scope_create_output.conf'));
+        $this->assertEquals($config_string, @file_get_contents(__DIR__.'/scope_create_output.conf'));
     }
 
     /** @test */

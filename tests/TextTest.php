@@ -19,20 +19,18 @@ use PHPUnit\Framework\TestCase;
 class TextTest extends TestCase
 {
 
-    /**
-     * @expectedException \Nfigurator\Exception
-     */
     public function testGetCharPosition()
     {
+        $this->expectException(\Nfigurator\Exception::class);
+
         $text = new Text('');
         $text->getChar(1.5);
     }
 
-    /**
-     * @expectedException \Nfigurator\Exception
-     */
     public function testGetCharEof()
     {
+        $this->expectException(\Nfigurator\Exception::class);
+
         $text = new Text('');
         $text->getChar(1);
     }

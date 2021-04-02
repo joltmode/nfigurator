@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Nfigurator\Exception;
 use Nfigurator\Scope;
 use PHPUnit\Framework\TestCase;
 
@@ -13,9 +14,9 @@ class FullExampleTest extends TestCase
 {
     public function testFullExample()
     {
-        $fullExample = Scope::fromFile('tests/full_nginx_example.conf');
+        $fullExample = Scope::fromFile(__DIR__.'/../full_nginx_example.conf');
 
-        $fullContent = $this->replaceDoubleSpaces(file_get_contents('tests/full_nginx_example.conf'));
+        $fullContent = $this->replaceDoubleSpaces(file_get_contents(__DIR__.'/../full_nginx_example.conf'));
         $fullContent = $this->replaceDoubleComments($fullContent) . ' ';
 
         $fullExample = $this->replaceDoubleSpaces((string) $fullExample);

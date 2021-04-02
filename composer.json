@@ -50,12 +50,11 @@
         }
     ],
     "require": {
-        "php": ">=7.2"
+        "php": ">=7.2|^8.0"
     },
     "require-dev": {
-        "codeclimate/php-test-reporter": "dev-master",
         "codacy/coverage": "dev-master",
-        "phpunit/phpunit": "^6.0"
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {

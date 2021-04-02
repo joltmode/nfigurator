@@ -26,6 +26,7 @@ class FileTest extends TestCase
      */
     public function testCannotRead()
     {
+        $this->expectException(\Nfigurator\Exception::class);
         new File('this_file_does_not_exist.txt');
     }
 
